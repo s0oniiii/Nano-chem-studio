@@ -1,29 +1,44 @@
 # Nano-Chem Studio
 
-SEM 이미지 입자 분석을 위한 Streamlit 웹 애플리케이션입니다.
+A Streamlit web application designed for SEM image particle analysis.
 
-## 기능
+## Features
 
-- **SEM 입자 분석**: SEM 이미지를 업로드하여 입자 개수를 자동으로 분석합니다.
-- **3D 화학 랩**: (구현 예정)
+**SEM Particle Analysis (Computer Vision Module)**:
+An automated image processing module powered by OpenCV and NumPy. It performs semantic segmentation on Scanning Electron Microscope (SEM) images to quantify nanoparticle dispersion.
 
-## 설치 방법
+- Key Technologies:
+Image Processing Pipeline: Implements Gaussian Blur for noise reduction and Otsu's Binarization for adaptive thresholding.
+Contour Detection: Utilizes OpenCV (cv2.findContours) to calculate particle area and morphology.
+Interactive Visualization: Features dynamic histograms using Plotly for particle size distribution analysis.
+Data Engineering: Automates statistical calculation (Mean, Std Dev) and generates downloadable CSV reports using Pandas.
 
-1. 필요한 라이브러리 설치:
+
+**3D Chemical Lab (Molecular Visualization Module)**:
+A web-based 3D molecular viewer built with Streamlit, PubChemPy, and py3Dmol. This module fetches 3D coordinates (SDF format) via REST API and renders them interactively using WebGL.
+
+- Key Features:
+Real-time Data Fetching: Seamless integration with PubChem API for instant access to molecular structures.
+Dynamic Legend Generation: Automatically detects unique elements in the molecule and generates a context-aware legend.
+Interactive Analysis: Supports 3D rotation, zooming, and toggleable atom labels with standard CPK coloring.
+
+## Installation 
+
+1. Install required libraries:
 ```bash
 pip install -r requirements.txt
 ```
 
-## 실행 방법
+## How to Run 
 
 ```bash
 streamlit run app.py
 ```
 
-브라우저에서 자동으로 열리며, 기본 주소는 `http://localhost:8501`입니다.
+The browser will open automatically. The default address is http://localhost:8501.
 
-## 사용 방법
+## Usage 
 
-1. 왼쪽 사이드바에서 "SEM 입자 분석" 메뉴를 선택합니다.
-2. "SEM 이미지를 업로드하세요" 섹션에서 JPG 또는 PNG 형식의 이미지를 업로드합니다.
-3. 업로드된 이미지가 자동으로 처리되어 입자 개수가 표시됩니다.
+1. Select the "SEM Particle Analysis" menu from the left sidebar.
+2. Upload a JPG or PNG image in the "Upload SEM Image" section.
+3. The uploaded image will be processed automatically, and the particle count will be displayed.
